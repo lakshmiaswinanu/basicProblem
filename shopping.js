@@ -56,7 +56,7 @@ return total;
 const main=()=>{
 const unitsRates = purchases.map(getUnitsRate);
 const bill = totalAmount(unitsRates);
-console.log(mbill);
+console.log(bill);
 }
 main();
 
