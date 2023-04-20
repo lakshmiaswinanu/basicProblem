@@ -21,7 +21,9 @@ const input = [
 		age: 65,
 	},
 ];
-const getMinAge = input.map((x) =>x.age);
+
+const getMinAge = input.map((x) => x.age);
+
 console.log([Math.min(...getMinAge)]);
 console.log([Math.max(...getMinAge)]);
-console.log([Math.max(...getMinAge)-Math.min(...getMinAge)]);
+console.log([Math.max(...getMinAge) - Math.min(...getMinAge)]);
