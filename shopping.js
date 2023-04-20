@@ -18,7 +18,7 @@ var taxes = {
 var purchases = [
   {
     item: 'Carrot',
-   units: 20,
+    units: 20,
   },
   {
     item: 'Apple',
@@ -28,36 +28,39 @@ var purchases = [
     item: 'Guava',
     units: 1,
   },
-];
-const getPurchases = purchases.map((x) => x.item);
+]
 
-const getRates = (x) => rates[x];
+const getPurchases = purchases.map((purchase) => purchase.item);
 
-const getTaxes = (x)=> (taxes[x]||0)/100;
+const getRates = (purchase) => rates[purchase];
 
-const getDiscounts =(x)=> (discounts[x]||0)/100;
+const getTaxes = (purchase) => (taxes[purchase] || 0) / 100;
 
-const getUnitsRate =(x)=>{
-   const discount = getDiscounts(x.item) * getRates(x.item)
-  const tax = getTaxes(x.item) * getRates(x.item)
-   const productSum = x.units * getRates(x.item) - discount *x.units + tax * x.units; 
-   console.log(productSum);
-    return productSum;
-};
- let total = 0;
-const totalAmount =(itemRates)=>{
-for( let i = 0;i <itemRates.length; i++)
-{
-       total = total + itemRates[i];
-   //console.log(total);
-} 
-return total;
+const getDiscounts = (purchase) => (discounts[purchase] || 0) / 100;
+
+const getUnitsRate = (purchase) => {
+  const discount = getDiscounts(purchase.item) * getRates(purchase.item)
+  const tax = getTaxes(purchase.item) * getRates(purchase.item)
+  const productSum = purchase.units * getRates(purchase.item) - discount * purchase.units + tax * purchase.units;
+  console.log(productSum);
+  return productSum;
 }
-const main=()=>{
-const unitsRates = purchases.map(getUnitsRate);
-const bill = totalAmount(unitsRates);
-console.log(bill);
+
+let total = 0;
+const totalAmount = (itemRates) => {
+  for (let i = 0; i < itemRates.length; i++) {
+    total = total + itemRates[i];
+    //console.log(total);
+  }
+  return total;
 }
+
+const main = () => {
+  const unitsRates = purchases.map(getUnitsRate);
+  const bill = totalAmount(unitsRates);
+  console.log(bill);
+}
+
 main();
 
 

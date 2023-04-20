@@ -48,6 +48,7 @@ const routes = [
     stops: ['trichy', 'madurai', 'thirunelvelli'],
   },
 ];
+
 const getDistance = (stops) => stops.map((stop, index, array) =>
   (distances.find((distance) => distance.start === stop && distance.end === array[index + 1]) || { distance: 0 }).distance);
 
