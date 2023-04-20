@@ -1,4 +1,4 @@
-const population=[
+const population = [
   {
     "state": "UttarPradesh",
     "estimate2011": 19.98,
@@ -50,34 +50,38 @@ const population=[
     "estimate2022": 4.6
   }
 ]
-const getDifferent = (population)=>{
 
-const getDifferent = (Number(population.estimate2022)-Number(population.estimate2011));
+const getDifferent = (population) => {
 
-const getPrecentage = (getDifferent/(population.estimate2011))*100;
+  const getDifferent = (Number(population.estimate2022) - Number(population.estimate2011));
 
-return {...population,Precentage:getPrecentage};
+  const getPrecentage = (getDifferent / (population.estimate2011)) * 100;
+
+  return { ...population, Precentage: getPrecentage };
 }
-const getMax2011 = Math.max(...population.map((population)=>population.estimate2011));
-const getMin2011 = Math.min(...population.map((population)=>population.estimate2011));
-const getMax2022 = Math.max(...population.map((population)=>population.estimate2022));
 
-const getMin2022 = Math.min(...population.map((population)=>population.estimate2022));
- 
+const getMax2011 = Math.max(...population.map((population) => population.estimate2011));
+const getMin2011 = Math.min(...population.map((population) => population.estimate2011));
+const getMax2022 = Math.max(...population.map((population) => population.estimate2022));
+
+const getMin2022 = Math.min(...population.map((population) => population.estimate2022));
+
 const sortTotal = (different) => {
-  
-	const getSort =different.sort((a, b) => b.total - a.total);
-  var i= 1;
+
+  const getSort = different.sort((a, b) => b.total - a.total);
+  var i = 1;
   rank = getSort.map((x) => ({
-		...x,
-		rank: i++ 
+    ...x,
+    rank: i++
   }))
   return rank;
 }
-const main=()=>{
-    const different = population.map(getDifferent);
-    const sortedTotal = sortTotal(different);
-    console.table(sortedTotal);
-  
+
+const main = () => {
+  const different = population.map(getDifferent);
+  const sortedTotal = sortTotal(different);
+  console.table(sortedTotal);
+
 }
+
 main();
