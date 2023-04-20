@@ -1,5 +1,3 @@
-
-
 const markSheets = [
 	{
 		student: 'Sriram',
@@ -26,7 +24,8 @@ const markSheets = [
 		student: 'balaji',
 		rollNo: 24,
 	},
-];
+]
+
 const studentMarks = {
 	11: {
 		tamil: 80,
@@ -42,7 +41,6 @@ const studentMarks = {
 		maths: 34,
 		social: 100,
 	},
-
 	18: {
 		tamil: 60,
 		english: 90,
@@ -72,11 +70,13 @@ const studentMarks = {
 		social: 99,
 	},
 };
+
 const getMark = (x) => studentMarks[x.rollNo];
 const getTotalMark = (x) => {
 	const finalTotal = x.tamil + x.english + x.science + x.maths + x.social;
 	return finalTotal;
 }
+
 const getResult = (x) => Math.min(x.tamil, x.english, x.science, x.maths, x.social) >= 40 ? 'pass' : 'Fail';
 
 const displayMark = (markSheets) => markSheets.map((x) => ({
@@ -101,4 +101,5 @@ const main = () => {
 	console.table(sortedTotal);
 	console.log(displayMark(markSheets));
 }
+
 main();
