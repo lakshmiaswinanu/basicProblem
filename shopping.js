@@ -42,25 +42,19 @@ const getUnitsRate = (purchase) => {
   const discount = getDiscounts(purchase.item) * getRates(purchase.item)
   const tax = getTaxes(purchase.item) * getRates(purchase.item)
   const productSum = purchase.units * getRates(purchase.item) - discount * purchase.units + tax * purchase.units;
-  console.log(productSum);
+  // console.log(productSum);
   return productSum;
 }
 
-let total = 0;
-const totalAmount = (itemRates) => {
-  for (let i = 0; i < itemRates.length; i++) {
-    total = total + itemRates[i];
-    //console.log(total);
-  }
-  return total;
-}
+const getTotalAmount =(itemRates)=> itemRates.reduce((acc, cur)=> acc + cur);
 
 const main = () => {
   const unitsRates = purchases.map(getUnitsRate);
-  const bill = totalAmount(unitsRates);
+  console.log(unitsRates);
+  const bill = getTotalAmount(unitsRates);
+
   console.log(bill);
 }
 
 main();
-
 
