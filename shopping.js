@@ -46,7 +46,7 @@ const getUnitsRate = (purchase) => {
   return productSum;
 }
 
-const getTotalAmount =(itemRates)=> itemRates.reduce((acc, cur)=> acc + cur);
+const getTotalAmount = (itemRates) => itemRates.reduce((acc, cur) => acc + cur);
 
 const main = () => {
   const unitsRates = purchases.map(getUnitsRate);
