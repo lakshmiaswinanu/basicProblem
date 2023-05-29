@@ -71,26 +71,26 @@ const studentMarks = {
 	},
 };
 
-const getMark = (x) => studentMarks[x.rollNo];
-const getTotalMark = (x) => {
-	const finalTotal = x.tamil + x.english + x.science + x.maths + x.social;
+const getMark = (mark) => studentMarks[mark.rollNo];
+const getTotalMark = (mark) => {
+	const finalTotal = mark.tamil + mark.english + mark.science + mark.maths + mark.social;
 	return finalTotal;
 }
 
-const getResult = (x) => Math.min(x.tamil, x.english, x.science, x.maths, x.social) >= 40 ? 'pass' : 'Fail';
+const getResult = (mark) => Math.min(mark.tamil, mark.english, mark.science, mark.maths, mark.social) >= 40 ? 'pass' : 'Fail';
 
-const displayMark = (markSheets) => markSheets.map((x) => ({
-	...x,
-	total: getTotalMark(studentMarks[x.rollNo]),
-	result: getResult(studentMarks[x.rollNo])
+const displayMark = (markSheets) => markSheets.map((mark) => ({
+	...mark,
+	total: getTotalMark(studentMarks[mark.rollNo]),
+	result: getResult(studentMarks[mark.rollNo])
 }));
 
 const sortTotal = (totalResult) => {
 	const getSort = totalResult.sort((a, b) => b.total - a.total);
 	var i = 1;
-	const rank = getSort.map((x) => ({
-		...x,
-		rank: (x.result === "pass") ? i++ : "-"
+	const rank = getSort.map((mark) => ({
+		...mark,
+		rank: (mark.result === "pass") ? i++ : "-"
 	}));
 	return rank;
 }
